@@ -137,6 +137,8 @@ data.show()
 scaler = StandardScaler(inputCol="features", outputCol="scaledFeatures", withStd=True, withMean=False)
 scaler_model = scaler.fit(data)
 data = scaler_model.transform(data)
+scaler_path = "C:/Users/abirm/Projects/BankChurnPredict/models/scaler"
+scaler_model.write().overwrite().save(scaler_path)
 # SÉPARATION DES DONNÉES 
 train_df, test_df = data.randomSplit([0.8, 0.2], seed=42)
 print(f"Train: {train_df.count()}, Test: {test_df.count()}")
